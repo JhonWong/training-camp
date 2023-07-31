@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	s := []int{1, 2, 3}
+	s := make([]int, 2, 4)
 	ns, err := slicedelete.Delete[int](s, 1)
 	if err != nil {
 		fmt.Println("Erase error!")
 		return
 	}
 
-	fmt.Println("After delete:", ns)
+	fmt.Println("After delete:", ns, "\tCap:", cap(ns))
 }

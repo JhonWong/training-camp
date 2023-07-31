@@ -4,8 +4,8 @@ import "errors"
 
 func Delete[T any](s []T, index int) ([]T, error) {
 	if index < 0 || index >= len(s) {
-		err := errors.New("Invalid index")
-		return s, err
+		err := errors.New("index out of range")
+		return nil, err
 	}
 
 	newCap := cap(s)
@@ -13,7 +13,7 @@ func Delete[T any](s []T, index int) ([]T, error) {
 		newCap /= 2
 	}
 
-	res := make([]T, len(s)-1, newCap)
+	res := make([]T, 0, newCap)
 	res = append(res, s[:index]...)
 	res = append(res, s[index+1:]...)
 	return res, nil
